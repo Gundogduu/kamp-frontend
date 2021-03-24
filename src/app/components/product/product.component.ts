@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -13,10 +14,23 @@ export class ProductComponent implements OnInit {
   products:Product[] = [];
   dataLoaded = false;
   //servisi kullanmak için yapman gereken bu. Angular senin yerine enjekte ediyor.
-  constructor(private productService:ProductService) { };
-
+  //activatedRout da enjecte edilebilir bir service,mevcut rout'u 
+  constructor(private productService:ProductService,
+    private activatedRoute:ActivatedRoute) { };
+  //Şimdi benim burada activatedrout'a gidip, categoryId var mı,yok mu? bakmam gerekiyor.Bu kadar basit.
+  //hangi metodu kullanacağına karar verecek.  
+  //params observable döndürdüğü için subscribe olmak gerekiyor.
+  //observable gördüğünde anlaki abone olmak gerekiyor.
+  //params,abone olunca benim parametrelerim oldu.yani 1 metod olarak abone olacağımıza birden fazla metod parametreye girebileceğiz.
   ngOnInit(): void {
-    this.getProducts();
+    this.activatedRoute.params.subscribe(params=>{
+      if(params["categoryId"]){
+        this.getProductsByCategory(params["categoryId"]);
+      }else{
+        this.getProducts();
+      }
+    })
+    //this.getProducts();
     //console.log("init çalıştı");
   };
 
@@ -27,6 +41,12 @@ export class ProductComponent implements OnInit {
     })
   }
 
+  getProductsByCategory(categoryId:number){
+    this.productService.getProductsByCategory(categoryId).subscribe(response=>{
+      this.products = response.data; 
+      this.dataLoaded = true;
+    })
+  }
 }
 
 //CODE REFACTORING YAPILDI! service'e taşındı...

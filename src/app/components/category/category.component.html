@@ -1,4 +1,26 @@
 <ul class="list-group">
-    <li *ngFor="let category of categories" 
-    class="list-group-item">{{category.categoryName}}</li>
+    <li (click)="setCurrentCategory(category)" *ngFor="let category of categories" 
+    routerLink= "/products/category/{{category.categoryId}}"
+    [class]="getCurrentCategoryClass(category)">{{category.categoryName}}</li>
   </ul>
+
+  <h5 *ngIf="currentCategory">{{currentCategory.categoryName}} seçtiniz</h5>
+
+  <!--
+    ben burada diyorum ki benim setCurrentCategory(category) adında bir metodum olacak,
+    ve ben o metoda o anki category'i kodluyorum.
+    burada category'i yazabilmem ngFor'da belirttiğimizden kaynaklı.
+    Önce ngFor çalışır.Dolayısıyla o li'nin kategorisi bellidir.
+    Peki bu click bubble nesnesinin nerede olması gerekiyor? Tabiki componentimizin içerisinde.
+
+    class="list-group-item active" bu built-in bir şey.
+    sen bunu değiştirmek istersen,componentteki bir bilgiye göre değiştirmek istiyorsan [class]'ı bu şekilde köşeli paranteze alıyorsun.
+    bunu her şey için yapabiliyorsunuz.Dolayısıyla RentACar projenizde resimlerle"image" çalışacaksınız oradaki img tag'inin src'sini [src] böyle vereceksiniz.
+    class="list-group-item active"  yerine  [class]="getCurrentCategoryClass(category)" bunu yazdık.Çünkü tıklandığında rengi değişmesi için konfigrasyon yaptık. 
+
+    routerLink= "/products/category/1"; static
+    routerLink= "/products/category/{{category.categoryId}}"; dinamik
+     routerLink= "/products/category/{{category.categoryId}}" bunu yaptığımızda hata verdi F12 de
+     sebebi elimizde böyle bir rout!un olmaması.
+     ActivateRout
+  -->
