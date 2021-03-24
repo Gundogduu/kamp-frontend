@@ -6,13 +6,25 @@
       <app-category></app-category>
     </div>
     <div class="col-md-9">
-      <app-product></app-product>
+      <router-outlet></router-outlet>
     </div>
   </div>
-  <router-outlet></router-outlet>
+  
 </div>
 
+<!--18.GÜN rooting'i öğreniyoruz
+<app-product></app-product> yerine <router-outlet></router-outlet> bunu geçirdik.
+<router-outlet></router-outlet> => değişkenleri burada görüntüleyeceğiz.
 
+yani standart olmasını istediğin yerleri normal ver, dinamik olmasını istediğin yere <router-outlet> yaz.
+tabiki bunu daha ileri uygulamalarda,ilerleyen zamanlarda bir tane "Dashboard" componenti yapıp,
+veya bir e-ticaret uygulamasında satış component'i,dashboard'u yapıp herşeyi onun içine koyabilirsiniz.
+Dolayısıyla mesela admin sayfalarındaki layout'u bu şekilde değiştirebilirsiniz.
+tabi orada yine modüllerle çalışma dediğimiz mevzu devreye giriyor ilerleyen zamanlarda göreceğiz.
+
+
+
+-->
 <!--Angular'ın devreye girebilmesi için {{}} süslü parantez içine angular kodunu yazıyoruz.
 Html bunu algılayıp componente gidip datayı getiriyor.
 *ngFor = bunlara "directive" deniyor. Bildiğimiz ForEach döngüsü.
