@@ -22,6 +22,9 @@ export class ProductComponent implements OnInit {
   //params observable döndürdüğü için subscribe olmak gerekiyor.
   //observable gördüğünde anlaki abone olmak gerekiyor.
   //params,abone olunca benim parametrelerim oldu.yani 1 metod olarak abone olacağımıza birden fazla metod parametreye girebileceğiz.
+
+  //Bu HATA'yı aldık çünkü backend ProductsController'da customerId döndüren değil, productId döndüren metodu çağırıyormuşuz!
+//ERROR Error: Cannot find a differ supporting object '[object Object]' of type 'object'. NgFor only supports binding to Iterables such as Arrays.
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
       if(params["categoryId"]){

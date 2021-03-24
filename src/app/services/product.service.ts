@@ -44,3 +44,5 @@ export class ProductService {
 //aksi durumda değişkenler karma karışık bir yapı haline geliyor.
 
 //(newPath) => fonksiyonun içindeki değişkeni direkt kullanabiliyorsunuz.
+
+

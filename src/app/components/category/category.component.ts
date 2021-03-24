@@ -38,7 +38,15 @@ export class CategoryComponent implements OnInit {
   //eğer html'de for ile dönerken category benim currentCategory'me eşitse, o zaman onun css class'ını değiştir.
   getCurrentCategoryClass(category:Category){
     if(category==this.currentCategory){
-      return "list-group-item list-group-item-success"
+      return "list-group-item active"
+    }else{
+      return "list-group-item"
+    }
+  }
+
+  getAllCategoryClass(){
+    if(!this.currentCategory){
+      return "list-group-item active"
     }else{
       return "list-group-item"
     }
