@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductResponseModel } from '../models/productResponseModel';
+import { ListResponseModel } from '../models/ListResponseModel';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ export class ProductService {
   apiUrl = "https://localhost:44314/api/products/getall";
   constructor(private httpClient:HttpClient) { }
 
-  getProducts():Observable<ProductResponseModel>{
-    return this.httpClient.get<ProductResponseModel>(this.apiUrl);
+  getProducts():Observable<ListResponseModel<Product>>{
+    return this.httpClient.get<ListResponseModel<Product>>(this.apiUrl);
   }
 }
 
@@ -24,3 +25,5 @@ export class ProductService {
 
 //Bir service'den api isteği yapmak için yapmanız gereken çalışma bu!
 //bu ne yapıyor? çok basit bir serviste bir apiUrl var,httpcliet'ı enjecte ettim ve bir metod vasıtasıyla bunu döndürdüm.
+
+//18.ders Listresponsemodel refactorin yaptık.

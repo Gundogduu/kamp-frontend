@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
-import { ProductResponseModel } from 'src/app/models/productResponseModel';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -14,7 +13,7 @@ export class ProductComponent implements OnInit {
   products:Product[] = [];
   dataLoaded = false;
   //servisi kullanmak için yapman gereken bu. Angular senin yerine enjekte ediyor.
-  constructor(private productodService:ProductService) { };
+  constructor(private productService:ProductService) { };
 
   ngOnInit(): void {
     this.getProducts();
@@ -22,7 +21,7 @@ export class ProductComponent implements OnInit {
   };
 
   getProducts(){
-    this.productodService.getProducts().subscribe(response=>{
+    this.productService.getProducts().subscribe(response=>{
       this.products = response.data; 
       this.dataLoaded = true;
     })
